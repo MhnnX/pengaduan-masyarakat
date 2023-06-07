@@ -20,6 +20,7 @@ if ($_SESSION['level'] == 'Masyarakat') {
               <td>$r[Foto_Pengaduan]</td>
               <td>$r[Status]</td>
               <td><a href=?module=pengaduan-masyarakat&act=update&id=$r[Id_Pengaduan]>Edit</a> | 
+              <a href=?module=pengaduan-masyarakat&act=detail&id=$r[Id_Pengaduan]>Detail</a> | 
               <a href=$aksi?module=pengaduan-masyarakat&act=hapus&id=$r[Id_Pengaduan] onclick=\"return confirm('Apakah Anda yakin ingin menghapus pengaduan ini?');\">Hapus</a>
               </td></tr>";
         $no++;
@@ -30,7 +31,7 @@ if ($_SESSION['level'] == 'Masyarakat') {
 
     case "input":
       echo "<h2>Tambah</h2>
-          <form method='POST' action='$aksi?module=pengaduan-masyarakat&act=input'>
+          <form method='POST' action='$aksi?module=pengaduan-masyarakat&act=input' enctype='multipart/form-data'>
             <table>
               <tr>
                 <td>Judul</td>
@@ -41,7 +42,7 @@ if ($_SESSION['level'] == 'Masyarakat') {
                 <td>: <textarea name='isi_laporan' rows='10' cols='50' required></textarea></td>
               </tr>
                 <td>Foto</td>
-                <td>: <input type='file' name='foto' accept='image/png, image/jpeg'></td>
+                <td>: <input type='file' name='foto_pengaduan' accept='image/png, image/jpeg'></td>
               </tr>
               <tr>
                 <td colspan='2'>
@@ -67,7 +68,7 @@ if ($_SESSION['level'] == 'Masyarakat') {
                 </tr>
                 <tr>
                   <td>Foto</td>
-                  <td>: <img src='./images/report/$r[Foto_Pengaduan]' width='100' height='100'></td>
+                  <td>: <img src='pengaduan_masyarakat/images/pengaduan/$r[Foto_Pengaduan]' width='100' height='100'></td>
                 </tr>
                 </tr>
                 <td></td>
@@ -109,7 +110,7 @@ if ($_SESSION['level'] == 'Masyarakat') {
                   </tr>
                   <tr>
                     <td>Foto</td>
-                    <td>: <img src='./images/report/$r[Foto_Pengaduan]' width='100' height='100'></td>
+                    <td>: <img src='./images/pengaduan/$r[Foto_Pengaduan]' alt='$r[Foto_Pengaduan]' width='300'></td>
                   </tr>
                   <tr>
                     <td>Status Pengaduan</td>

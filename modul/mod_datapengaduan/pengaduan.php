@@ -17,18 +17,18 @@ if ($_SESSION['level'] == 'Admin' || $_SESSION['level'] == 'Petugas') {
         <td>$r[Pesan_Pengaduan]</td>
         <td>$r[Foto_Pengaduan]</td>
         <td>$r[Status]</td>
-        <td><a href=?module=show-pengaduan&act=detail&id=$r[Id_Pengaduan]>Tanggapi</a>
+        <td><a href=?module=show-pengaduan&act=tanggapi&id=$r[Id_Pengaduan]>Tanggapi</a>
         </td></tr>";
         $no++;
       }
       echo "</table>";
       break;
 
-    case "detail":
+    case "tanggapi":
       $edit = mysqli_query($conn, "SELECT * FROM pengaduan WHERE Id_Pengaduan = '$_GET[id]'");
       $r = mysqli_fetch_array($edit);
 
-      echo "<h2>Details</h2>
+      echo "<h2>Menanggapi Pengaduan</h2>
                 <form method='POST'>
                   <input type='hidden' name='id' value='$r[Id_Pengaduan]'>
                   <table>
@@ -46,7 +46,7 @@ if ($_SESSION['level'] == 'Admin' || $_SESSION['level'] == 'Petugas') {
                     </tr>
                     <tr>
                       <td>Foto</td>
-                      <td>: <img src='./images/report/$r[Foto_Pengaduan]' width='100' height='100' disabled></td>
+                      <td>: <img src='./images/pengaduan/$r[Foto_Pengaduan]' alt='$r[Foto_Pengaduan]' width='300' disabled></td>
                     </tr>
                     <tr>
                       <td>Isi Laporan</td>
